@@ -1,23 +1,43 @@
 <script setup>
 import { ref } from "vue";
 import { RouterLink, RouterView } from "vue-router";
-const greeting = ref("Hello World");
 import { onMounted } from "vue";
 
-onMounted(() => {
-  console.log("Component is mounted");
-  setTimeout(() => {
-    greeting.value = "Changed";
-  }, 3000);
-});
+const buttonClasses = ref(["text-green"]);
+const active = ref(false);
+const toggle = () => {
+  // buttonClasses.value = "text-red";
+  active.value = !active.value;
+};
 </script>
 
 <template>
-  <p>
-    <input
-      type="text"
-      v-model="greeting"
-    />
-  </p>
-  <p>{{ greeting }} ({{ greeting.length }})</p>
+  <div class="center">
+    <button
+      :class="active ? 'text-red' : 'text-green'"
+      @click="toggle"
+    >
+      Click me
+    </button>
+  </div>
 </template>
+
+<style scoped>
+body {
+  display: grid;
+  place-items: center;
+}
+
+.center {
+  display: grid;
+  place-items: center;
+}
+
+.text-red {
+  color: red;
+}
+
+.text-green {
+  color: green;
+}
+</style>
