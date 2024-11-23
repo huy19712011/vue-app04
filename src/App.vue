@@ -2,6 +2,7 @@
 import { computed, ref } from "vue";
 import { RouterLink, RouterView } from "vue-router";
 import { onMounted } from "vue";
+import AppButton from "./components/AppButton.vue";
 
 const assignments = ref([
   { id: 1, name: "Finish project", complete: false },
@@ -19,46 +20,7 @@ const inProgressAssignments = computed(() => {
 
 <template>
   <div class="center">
-    <section v-show="inProgressAssignments.length">
-      <h2>In Progress</h2>
-      <ul>
-        <li
-          v-for="assignment in inProgressAssignments"
-          :key="assignment.id"
-        >
-          <label>
-            {{ assignment.name }}
-            <input
-              type="checkbox"
-              v-model="assignment.complete"
-            />
-          </label>
-        </li>
-      </ul>
-      <!-- <pre>
-        {{ assignments }}
-      </pre> -->
-    </section>
-    <section v-show="completedAssignments.length">
-      <h2>Completed</h2>
-      <ul>
-        <li
-          v-for="assignment in completedAssignments"
-          :key="assignment.id"
-        >
-          <label>
-            {{ assignment.name }}
-            <input
-              type="checkbox"
-              v-model="assignment.complete"
-            />
-          </label>
-        </li>
-      </ul>
-      <!-- <pre>
-        {{ assignments }}
-      </pre> -->
-    </section>
+    <AppButton></AppButton>
   </div>
 </template>
 
