@@ -20,7 +20,7 @@ const inProgressAssignments = computed(() => {
 
 <template>
   <div class="center">
-    <AppButton></AppButton>
+    <AppButton processing="false"></AppButton>
   </div>
 </template>
 
