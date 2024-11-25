@@ -14,12 +14,23 @@ const assignments = ref([
 //   return assignments.value.filter((assignment) => !assignment.complete);
 // });
 
+const newAssignment = ref("");
+
 const filters = computed(() => {
   return {
     inProgress: assignments.value.filter((assignment) => !assignment.complete),
     completed: assignments.value.filter((assignment) => assignment.complete),
   };
 });
+
+const add = () => {
+  assignments.value.push({
+    id: assignments.value.length + 1,
+    name: newAssignment.value,
+    complete: false,
+  });
+  newAssignment.value = "";
+};
 </script>
 
 <template>
@@ -34,6 +45,13 @@ const filters = computed(() => {
       title="Completed"
     >
     </AssignmentList>
+    <form @submit.prevent="add">
+      <input
+        placeholder="New assignment..."
+        v-model="newAssignment"
+      />
+      <button type="submit">Add</button>
+    </form>
   </div>
 </template>
 
