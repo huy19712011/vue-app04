@@ -1,5 +1,5 @@
 <script setup>
-import { ref, defineProps } from "vue";
+import { ref } from "vue";
 
 defineProps({
   type: {
@@ -18,7 +18,7 @@ defineProps({
     :class="{
       'border rounded': true,
       'btn btn-primary': type === 'primary',
-      'btn btn-sencondary': type === 'secondary',
+      'btn btn-warning': type === 'secondary',
       'btn btn-light': type === 'muted',
     }"
     :disabled="processing"
